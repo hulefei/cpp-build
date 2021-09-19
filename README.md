@@ -73,7 +73,7 @@ nm max_c.o
 
 ## cpp load and link
 
-```
+```cpp
 // main_cpp.cpp
 #include <stdio.h>
 
@@ -86,7 +86,7 @@ int main(void){
 }
 ```
 
-```
+```cpp
 //max_cpp.cpp
 int max(int x, int y){
   return x >= y ? x : y;
@@ -145,7 +145,7 @@ nm max_cpp.o
 
 ### cpp 调用 cpp 函数
 
-```
+```cpp
 // main_cpp.cpp
 #include <stdio.h>
 #include "max.h"
@@ -159,7 +159,7 @@ int main(void){
 }
 ```
 
-```
+```cpp
 //max_cpp.cpp
 int max(int x, int y){
   return x >= y ? x : y;
@@ -217,7 +217,7 @@ nm max_cpp.o
 ### cpp中调用c函数使用 extern "C"
 
 
-```
+```cpp
 // main_cpp.cpp
 #include <stdio.h>
 
@@ -230,7 +230,7 @@ int main(void){
 }
 ```
 
-```
+```c
 //max_c.c
 int max(int x, int y){
   return x >= y ? x : y;
@@ -285,7 +285,7 @@ nm max_c.o
 ### c中调用cpp
 
 
-```
+```c
 // main2_c.c
 #include <stdio.h>
 
@@ -300,7 +300,7 @@ int main(void){
 }
 ```
 
-```
+```cpp
 //max_cpp.cpp
 int max(int x, int y){
   return x >= y ? x : y;
