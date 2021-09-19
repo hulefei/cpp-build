@@ -93,6 +93,28 @@ int max(int x, int y){
 }
 ```
 
+```
+@echo off
+
+g++ -E max_cpp.cpp -o max_cpp.i
+g++ -S max_cpp.i -o max_cpp.s
+g++ -c max_cpp.s -o max_cpp.o
+
+g++ -E main_cpp.cpp -o main_cpp.i
+rem 编译成汇编代码
+g++ -S main_cpp.i -o main_cpp.s
+rem 从汇编代码生成目标文件
+g++ -c main_cpp.s -o main_cpp.o
+rem 直接从源文件生成目标文件
+g++ -c main_cpp.o
+
+g++ main_cpp.o max_cpp.o -o main_cpp.exe
+
+echo "main_cpp========"
+nm main_cpp.o
+echo "max_cpp========"
+nm max_cpp.o
+```
 
 ```
 "========"
@@ -142,6 +164,30 @@ int main(void){
 int max(int x, int y){
   return x >= y ? x : y;
 }
+```
+
+
+```
+@echo off
+
+g++ -E max_cpp.cpp -o max_cpp.i
+g++ -S max_cpp.i -o max_cpp.s
+g++ -c max_cpp.s -o max_cpp.o
+
+g++ -E main_cpp.cpp -o main_cpp.i
+rem 编译成汇编代码
+g++ -S main_cpp.i -o main_cpp.s
+rem 从汇编代码生成目标文件
+g++ -c main_cpp.s -o main_cpp.o
+rem 直接从源文件生成目标文件
+g++ -c main_cpp.o
+
+g++ main_cpp.o max_cpp.o -o main_cpp.exe
+
+echo "main_cpp========"
+nm main_cpp.o
+echo "max_cpp========"
+nm max_cpp.o
 ```
 
 
@@ -268,6 +314,42 @@ extern "C" {
 }
 ```
 
+
+```
+@echo off
+
+gcc -E main_c.c -o main_c.i
+gcc -S main_c.i -o main_c.s
+gcc -c main_c.s -o main_c.o
+
+gcc -E main2_c.c -o main2_c.i
+gcc -S main2_c.i -o main2_c.s
+gcc -c main2_c.s -o main2_c.o
+
+g++ -E max_cpp.cpp -o max_cpp.i
+g++ -S max_cpp.i -o max_cpp.s
+g++ -c max_cpp.s -o max_cpp.o 
+
+gcc main_c.o max_cpp.o -o main_c.exe
+gcc main2_c.o max_cpp.o -o main2_c.exe
+
+echo "main_c========"
+nm main_c.o
+
+echo "max_cpp========"
+nm max_cpp.o
+
+echo "main2_c========"
+nm main2_c.o
+
+@REM echo "main_c.exe"
+@REM main_c.exe
+
+@REM echo "main2_c.exe"
+@REM main2_c.exe
+```
+
+
 ```
 "max_cpp========"
 0000000000000000 b .bss
@@ -295,5 +377,6 @@ extern "C" {
 #### 外部参考
 
 [为什么需要 extern "C"?](https://imzlp.com/posts/5392/)
+
 
 
